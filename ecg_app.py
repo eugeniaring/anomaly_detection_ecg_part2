@@ -1,5 +1,7 @@
 import pandas as pd
 import numpy as np
+import os
+
 import streamlit as st
 import requests
 import zipfile
@@ -7,6 +9,9 @@ import zipfile
 #from servicerequest import make_request_to_bento_service
 from src.create_data import read_dataset
 from src.visualize import visualize_predict_vs_gt
+
+if not os.path.exists('test_eval'):
+    os.mkdir('test_eval')
 
 SERVICE_URL = "https://ke496mufza.execute-api.us-west-1.amazonaws.com/predict"
 model_name = 'if'
@@ -60,8 +65,8 @@ if file_csv is not None and button is not None:
     for idx in l_ids:
         patient_df,expected_output = filter_df(patients_df,idx)
         pred = make_request_to_bento_service(SERVICE_URL, patient_df)
-        print(f"prediction: {pred}")
-        print(f"Expected output: {expected_output.astype(int)}")
+        # print(f"prediction: {pred}")
+        # print(f"Expected output: {expected_output.astype(int)}")
         rows.extend(pred)
     patients_df['test_preds']=rows
 
