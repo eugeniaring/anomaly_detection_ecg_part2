@@ -1,0 +1,18 @@
+dir: /root/ad_ecg/anomaly_detection_ecg/ecg_data
+#dir: ecg_data
+model_name: autoencoder
+
+mlflow_url: https://dagshub.com/eugenia.anello/anomaly_detection_ecg_part2.mlflow 
+MLFLOW_TRACKING_USERNAME: eugenia.anello
+MLFLOW_TRACKING_PASSWORD: b706a523d74e854bf36406caf388cb3594a0a7ca
+
+
+## hyperparameters of ae
+n_epochs: 30
+batch_size: 32
+optimizer: adam
+type_loss: mae
+patience: 5
+
+## hyperparameters of isolation forest
+contamination: 0.004
