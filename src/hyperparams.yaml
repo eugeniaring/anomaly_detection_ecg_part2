@@ -1,11 +1,12 @@
 dir: /root/ad_ecg/anomaly_detection_ecg/ecg_data
 #dir: ecg_data
-model_name: autoencoder
+model_name: if
+mlflow_model_name: isolation-forest-model
 
 mlflow_url: https://dagshub.com/eugenia.anello/anomaly_detection_ecg_part2.mlflow 
 MLFLOW_TRACKING_USERNAME: eugenia.anello
-MLFLOW_TRACKING_PASSWORD: b706a523d74e854bf36406caf388cb3594a0a7ca
-
+MLFLOW_TRACKING_PASSWORD: bd3592a38029adedb7da200ee3281176919c5d18  
+DAGSHUB_REPO_NAME: anomaly_detection_ecg_part2
 
 ## hyperparameters of ae
 n_epochs: 30

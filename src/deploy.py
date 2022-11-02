@@ -2,7 +2,7 @@ import mlflow
 import os 
 import mlflow.sagemaker
 from create_data import read_yaml
-params = read_yaml('src/hyperparams2.yaml')
+params = read_yaml('hyperparams.yaml')
 
 DAGSHUB_USER_NAME = params['MLFLOW_TRACKING_USERNAME']
 DAGSHUB_REPO_NAME = params['DAGSHUB_REPO_NAME']
@@ -42,3 +42,4 @@ mlflow.sagemaker.deploy(app_name="ifTest",
     instance_count=1,
     region_name=region
 )
+
