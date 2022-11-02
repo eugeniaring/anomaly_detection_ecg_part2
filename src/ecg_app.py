@@ -21,6 +21,10 @@ region = "us-east-1"
 
 model_name = 'if'
 
+import subprocess
+
+subprocess.call("aws configure import --csv credentials.csv", shell=True)
+
 st.markdown('# **Web App to detect Anomalies from ECG signals**')
 
 file_csv = st.sidebar.file_uploader("Choose CSV file to evaluate model",type=["csv"])
