@@ -35,7 +35,7 @@ def query_endpoint(app_name, input_json):
     """ Invoke the SageMaker endpoint and send the 
     input request to be processed 
     """
-    client = boto3.session.Session(aws_access_key_id="AKIA4LVV7QM7AJCNFGN4", aws_secret_access_key="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", region_name="us-east-1",profile_name="eugeniaring").client('sagemaker-runtime', region)
+    client = boto3.session.Session(aws_access_key_id="AKIA4LVV7QM7AJCNFGN4", aws_secret_access_key="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", region_name="us-east-1").client('sagemaker-runtime', region)
 
     response = client.invoke_endpoint(
         EndpointName = app_name,
