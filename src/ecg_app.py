@@ -8,7 +8,7 @@ import streamlit as st
 import requests
 import zipfile
 
-from create_data import read_dataset,read_yaml
+from create_data import read_dataset
 from visualize import visualize_predict_vs_gt
 
 if not os.path.exists('test_eval'):
@@ -29,8 +29,10 @@ st.markdown('# **Web App to detect Anomalies from ECG signals**')
 
 file_csv = st.sidebar.file_uploader("Choose CSV file to evaluate model",type=["csv"])
 
+f = open('hyperparams.yaml','rb')
+params = yaml.load(f, Loader=yaml.FullLoader)
+f.close()
 
-params = read_yaml('src/hyperparams.yaml')
 
 print(params['mlflow_model_name'])
 aws_access_key_id = params['aws_access_key_id']
