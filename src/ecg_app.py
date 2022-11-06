@@ -29,9 +29,10 @@ st.markdown('# **Web App to detect Anomalies from ECG signals**')
 
 file_csv = st.sidebar.file_uploader("Choose CSV file to evaluate model",type=["csv"])
 
-aws_access_key_id = os.environ['AWS_ACCESS_KEY_ID']
-aws_access_key_key = os.environ['AWS_SECRET_ACCESS_KEY']
-region_name = os.environ['REGION_NAME']
+aws_access_key_id = ${{ secrets.AWS_ACCESS_KEY_ID }}
+aws_access_key_key = ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+region_name = ${{ secrets.REGION_NAME }}
+
 
 #params = read_yaml('src/hyperparams.yaml')
 button = st.sidebar.button('Check Anomalies!')
