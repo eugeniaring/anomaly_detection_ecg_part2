@@ -24,4 +24,4 @@ jobs:
           aws-region: ${{ secrets.REGION_NAME }} 
     - name: Copy files to the test website with the AWS CLI
       run: |
-        aws s3 sync . s3://my-s3-test-website-bucket
+        aws s3 sync mlflow-sagemaker-us-east-1-849711432510 . s3://my-s3-test-website-bucket
