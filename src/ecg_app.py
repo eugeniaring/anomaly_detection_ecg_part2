@@ -44,7 +44,7 @@ file_csv = st.sidebar.file_uploader("Choose CSV file to evaluate model",type=["c
 
 button = st.sidebar.button('Check Anomalies!')
 
-def query_endpoint(app_name,params, input_json):
+def query_endpoint(app_name, input_json):
     """ Invoke the SageMaker endpoint and send the 
     input request to be processed 
     """
@@ -83,7 +83,7 @@ if file_csv is not None and button is not None:
     for idx in l_ids:
         input_data,expected_output =  filter_df(patients_df,idx)
         input_data = input_data.to_json(orient="split")
-        predictions = query_endpoint(app_name=app_name,params=params, input_json=input_data)
+        predictions = query_endpoint(app_name=app_name, input_json=input_data)
         # print(f"prediction: {pred}")
         # print(f"Expected output: {expected_output.astype(int)}")
         rows.extend(predictions)
