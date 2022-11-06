@@ -6,7 +6,8 @@ jobs:
   create-envfile:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@create-envfile@v1.3
+    - name: Make envfile
+      uses: SpicyPizza/create-envfile@v1.3
       with:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }} 
