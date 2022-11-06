@@ -28,7 +28,7 @@ import subprocess
 st.markdown('# **Web App to detect Anomalies from ECG signals**')
 
 file_csv = st.sidebar.file_uploader("Choose CSV file to evaluate model",type=["csv"])
-params = read_yaml('hyperparams.yaml')
+params = read_yaml('src/hyperparams.yaml')
 button = st.sidebar.button('Check Anomalies!')
 
 def query_endpoint(app_name,params, input_json):
