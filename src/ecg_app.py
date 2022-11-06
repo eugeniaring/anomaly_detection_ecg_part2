@@ -8,7 +8,7 @@ import streamlit as st
 import requests
 import zipfile
 
-from create_data import read_dataset
+from create_data import read_dataset,read_yaml
 from visualize import visualize_predict_vs_gt
 
 if not os.path.exists('test_eval'):
@@ -28,14 +28,14 @@ import subprocess
 st.markdown('# **Web App to detect Anomalies from ECG signals**')
 
 file_csv = st.sidebar.file_uploader("Choose CSV file to evaluate model",type=["csv"])
-
+params = read_yaml('hyperparams.yaml')
 button = st.sidebar.button('Check Anomalies!')
 
-def query_endpoint(app_name, input_json):
+def query_endpoint(app_name,params, input_json):
     """ Invoke the SageMaker endpoint and send the 
     input request to be processed 
     """
-    client = boto3.session.Session().client('sagemaker-runtime', region)
+    client = boto3.session.Session(aws_access_key_id=params['aws_access_key_id'], aws_secret_access_key=params['aws_secret_access_key'], region_name=params['region_name']).client('sagemaker-runtime', region)
 
     response = client.invoke_endpoint(
         EndpointName = app_name,

@@ -8,6 +8,10 @@ MLFLOW_TRACKING_USERNAME: eugenia.anello
 MLFLOW_TRACKING_PASSWORD: bd3592a38029adedb7da200ee3281176919c5d18  
 DAGSHUB_REPO_NAME: anomaly_detection_ecg_part2
 
+aws_access_key_id: secrets.aws_access_key_id
+aws_secret_access_key: secrets.aws_secret_access_key
+region_name: secrets.region_name
+
 ## hyperparameters of ae
 n_epochs: 30
 batch_size: 32
