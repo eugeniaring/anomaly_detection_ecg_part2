@@ -70,7 +70,7 @@ if file_csv is not None and button is not None:
     for idx in l_ids:
         input_data,expected_output =  filter_df(patients_df,idx)
         input_data = input_data.to_json(orient="split")
-        predictions = query_endpoint(app_name=app_name, input_json=input_data)
+        predictions = query_endpoint(app_name=app_name,params=params, input_json=input_data)
         # print(f"prediction: {pred}")
         # print(f"Expected output: {expected_output.astype(int)}")
         rows.extend(predictions)
