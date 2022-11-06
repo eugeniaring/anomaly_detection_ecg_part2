@@ -32,7 +32,7 @@ file_csv = st.sidebar.file_uploader("Choose CSV file to evaluate model",type=["c
 
 params = read_yaml('src/hyperparams.yaml')
 
-
+print(params['mlflow_model_name'])
 aws_access_key_id = params['aws_access_key_id']
 aws_access_key_key = params['aws_access_key_key']
 region_name = params['region_name']
