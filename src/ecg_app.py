@@ -29,7 +29,7 @@ st.markdown('# **Web App to detect Anomalies from ECG signals**')
 
 file_csv = st.sidebar.file_uploader("Choose CSV file to evaluate model",type=["csv"])
 
-f = open('hyperparams.yaml','rb')
+f = open('src/hyperparams.yaml','rb')
 params = yaml.load(f, Loader=yaml.FullLoader)
 f.close()
 
