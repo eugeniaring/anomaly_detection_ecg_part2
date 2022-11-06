@@ -29,12 +29,14 @@ st.markdown('# **Web App to detect Anomalies from ECG signals**')
 
 file_csv = st.sidebar.file_uploader("Choose CSV file to evaluate model",type=["csv"])
 
-aws_access_key_id = ${{ secrets.AWS_ACCESS_KEY_ID }}
-aws_access_key_key = ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-region_name = ${{ secrets.REGION_NAME }}
+
+params = read_yaml('src/hyperparams.yaml')
 
 
-#params = read_yaml('src/hyperparams.yaml')
+aws_access_key_id = params['aws_access_key_id']
+aws_access_key_key = params['aws_access_key_key']
+region_name = params['region_name']
+
 button = st.sidebar.button('Check Anomalies!')
 
 def query_endpoint(app_name,params, input_json):
