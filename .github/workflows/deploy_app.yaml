@@ -7,14 +7,18 @@ on:
     branches: [ main ]
 
 jobs:
-  create-envfile:
+  deploy:
+    name: Upload to Amazon S3
     runs-on: ubuntu-20.04
+    permissions:
+      id-token: write
+      contents: read
     steps:
-    - name: Make envfile
-      uses: SpicyPizza/create-envfile@v1
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Configure AWS credentials from Test account
+      uses: aws-actions/configure-aws-credentials@v1
       with:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }} 
           REGION_NAME: ${{ secrets.REGION_NAME }} 
-          directory: src
-          file_name: .env
