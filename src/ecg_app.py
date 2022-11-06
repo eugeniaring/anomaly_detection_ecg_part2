@@ -4,6 +4,7 @@ import json
 import boto3
 import os
 import yaml
+from dotenv import load_dotenv
 
 import streamlit as st
 import requests
@@ -30,15 +31,16 @@ st.markdown('# **Web App to detect Anomalies from ECG signals**')
 
 file_csv = st.sidebar.file_uploader("Choose CSV file to evaluate model",type=["csv"])
 
-f = open('src/hyperparams.yaml','rb')
-params = yaml.load(f, Loader=yaml.FullLoader)
-f.close()
+# f = open('hyperparams.yaml','rb')
+# params = yaml.load(f, Loader=yaml.FullLoader)
+# f.close()
 
 
-print(params['mlflow_model_name'])
-aws_access_key_id = os.environ.get('AWS_ACCESS_KEY_ID')
-aws_access_key_key = os.environ.get('AWS_SECRET_ACCESS_KEY')
-region_name = os.environ.get('REGION_NAME')
+# load_dotenv()
+# aws_access_key_id = os.getenv('aws_access_key_id')
+# print('aws_access_key_id',aws_access_key_id)
+# aws_access_key_key = os.getenv('AWS_SECRET_ACCESS_KEY')
+# region_name = os.getenv('REGION_NAME')    
 
 button = st.sidebar.button('Check Anomalies!')
 
@@ -46,8 +48,8 @@ def query_endpoint(app_name,params, input_json):
     """ Invoke the SageMaker endpoint and send the 
     input request to be processed 
     """
-    client = boto3.session.Session(aws_access_key_id=aws_access_key_id, aws_secret_access_key=aws_access_key_key, region_name=region_name).client('sagemaker-runtime', region)
-
+    #client = boto3.session.Session(aws_access_key_id=aws_access_key_id, aws_secret_access_key=aws_access_key_key, region_name=region_name).client('sagemaker-runtime', region)
+    client = boto3.session.Session().client('sagemaker-runtime', region)
     response = client.invoke_endpoint(
         EndpointName = app_name,
         Body = input_json,
