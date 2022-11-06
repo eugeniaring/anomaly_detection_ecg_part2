@@ -1,16 +1,16 @@
 name: Deploy App
 on:
+  # Trigger the workflow on push or pull request,
+  # but only for the main branch
   push:
     branches:
       - master
-    paths:
-      - src/**
-      - .github/workflows/deploy_app.yaml
 jobs:
-  deploy_app:
-    name: Deploy App
+  build:
     runs-on: ubuntu-latest
-    env:
-      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }} 
-      REGION_NAME: ${{ secrets.REGION_NAME }} 
+    steps:
+      - uses: actions/checkout@v1
+env:
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }} 
+        REGION_NAME: ${{ secrets.REGION_NAME }} 
