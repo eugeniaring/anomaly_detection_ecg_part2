@@ -37,10 +37,10 @@ file_csv = st.sidebar.file_uploader("Choose CSV file to evaluate model",type=["c
 
 
 # load_dotenv()
-# aws_access_key_id = os.getenv('aws_access_key_id')
-# print('aws_access_key_id',aws_access_key_id)
-# aws_access_key_key = os.getenv('AWS_SECRET_ACCESS_KEY')
-# region_name = os.getenv('REGION_NAME')    
+aws_access_key_id = os.getenv('aws_access_key_id')
+print('aws_access_key_id',aws_access_key_id)
+aws_access_key_key = os.getenv('AWS_SECRET_ACCESS_KEY')
+region_name = os.getenv('REGION_NAME')    
 
 button = st.sidebar.button('Check Anomalies!')
 
@@ -49,8 +49,9 @@ def query_endpoint(app_name, input_json):
     input request to be processed 
     """
     #client = boto3.session.Session(aws_access_key_id=aws_access_key_id, aws_secret_access_key=aws_access_key_key, region_name=region_name).client('sagemaker-runtime', region)
-    client = boto3.session.Session().client('sagemaker-runtime', region)
-    response = client.invoke_endpoint(
+    #client = boto3.session.Session().client('sagemaker-runtime', region)
+    runtime= boto3.client('runtime.sagemaker',region)
+    response = runtime.invoke_endpoint(
         EndpointName = app_name,
         Body = input_json,
         ContentType = 'application/json; format=pandas-split',
