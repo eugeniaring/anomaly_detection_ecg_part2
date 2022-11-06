@@ -28,14 +28,19 @@ import subprocess
 st.markdown('# **Web App to detect Anomalies from ECG signals**')
 
 file_csv = st.sidebar.file_uploader("Choose CSV file to evaluate model",type=["csv"])
-params = read_yaml('src/hyperparams.yaml')
+
+aws_access_key_id = os.environ['AWS_ACCESS_KEY_ID']
+aws_access_key_key = os.environ['AWS_SECRET_ACCESS_KEY']
+region_name = os.environ['REGION_NAME']
+
+#params = read_yaml('src/hyperparams.yaml')
 button = st.sidebar.button('Check Anomalies!')
 
 def query_endpoint(app_name,params, input_json):
     """ Invoke the SageMaker endpoint and send the 
     input request to be processed 
     """
-    client = boto3.session.Session(aws_access_key_id=params['aws_access_key_id'], aws_secret_access_key=params['aws_secret_access_key'], region_name=params['region_name']).client('sagemaker-runtime', region)
+    client = boto3.session.Session(aws_access_key_id=aws_access_key_id, aws_secret_access_key=aws_access_key_key, region_name=region_name).client('sagemaker-runtime', region)
 
     response = client.invoke_endpoint(
         EndpointName = app_name,
