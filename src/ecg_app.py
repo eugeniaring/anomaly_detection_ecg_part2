@@ -36,9 +36,9 @@ f.close()
 
 
 print(params['mlflow_model_name'])
-aws_access_key_id = params['aws_access_key_id']
-aws_access_key_key = params['aws_access_key_key']
-region_name = params['region_name']
+aws_access_key_id = os.environ['AWS_ACCESS_KEY_ID']
+aws_access_key_key = os.environ['AWS_SECRET_ACCESS_KEY']
+region_name = os.environ['REGION_NAME']
 
 button = st.sidebar.button('Check Anomalies!')
 
