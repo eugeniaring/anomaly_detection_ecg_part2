@@ -37,10 +37,12 @@ file_csv = st.sidebar.file_uploader("Choose CSV file to evaluate model",type=["c
 
 
 # load_dotenv()
-aws_access_key_id = os.getenv('aws_access_key_id')
-print('aws_access_key_id',aws_access_key_id)
-aws_access_key_key = os.getenv('AWS_SECRET_ACCESS_KEY')
-region_name = os.getenv('REGION_NAME')    
+# print(print(os.environ))
+# aws_access_key_id = os.environ['AWS_ACCESS_KEY_ID']
+# #os.getenv('AWS_ACCESS_KEY_ID')
+# print('aws_access_key_id',aws_access_key_id)
+# aws_access_key_key = os.getenv('AWS_SECRET_ACCESS_KEY')
+# region_name = os.getenv('REGION_NAME')    
 
 button = st.sidebar.button('Check Anomalies!')
 
