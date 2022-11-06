@@ -11,5 +11,3 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }} 
           REGION_NAME: ${{ secrets.REGION_NAME }} 
-    - name: run web app
-      run: streamlit run src/ecg_app.py 
