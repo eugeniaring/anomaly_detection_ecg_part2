@@ -1,7 +1,8 @@
 # Anomaly Detection project in ECG signals - Part 2
 The goal of this project is to detect irregular heart rhythms from ECG signals. Since irregular heart rhythms usually constitute a minority compared to normal ones, we are solving an anomaly detection problem. It's not only anomaly detection, but it's also peak detection. So, we need to identify peaks and establish if these peaks are anomalous.
 
-The article with the explanations is An End to End Anomaly Detection App for ECG signals with DagsHub, SageMaker, and Streamlit.
+The article with the explanations is [An End to End Anomaly Detection App for ECG signals with DagsHub, SageMaker, and Streamlit](https://towardsdatascience.com/an-end-to-end-web-app-to-detect-anomalies-from-ecg-signals-with-streamlit-e00c177305ff?sk=be3c3bb901b6de83b74c9d2e228e41fd).
+You can also find link to my deployed app is [here](https://eugeniaring-anomaly-detection-ecg-part2-srcecg-app-xwxtyw.streamlit.app/).
 
 ## Tools used in the project
 
